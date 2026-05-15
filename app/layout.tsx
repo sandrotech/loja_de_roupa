@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Toaster } from '@/components/ui/sonner'
@@ -13,6 +13,15 @@ export const metadata: Metadata = {
   title: 'Bellavie Hub | Sistema de Gestão',
   description: 'Sistema ERP/Estoque para Bellavie - Moda Feminina',
   generator: 'v0.app',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Bellavie Hub',
+  },
+  formatDetection: {
+    telephone: false,
+  },
   icons: {
     icon: [
       {
@@ -32,6 +41,15 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  themeColor: '#9A7A8F',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -39,6 +57,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="bg-background">
+      <head>
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Bellavie Hub" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
+      </head>
       <body className={`${plusJakarta.variable} font-sans antialiased`}>
         {children}
         <Toaster />

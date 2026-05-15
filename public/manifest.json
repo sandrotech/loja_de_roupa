@@ -1,0 +1,32 @@
+{
+  "name": "Bellavie Hub",
+  "short_name": "Bellavie",
+  "description": "Sistema de Gestão Bellavie - Moda Feminina",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F9DDE5",
+  "theme_color": "#9A7A8F",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "pt-BR",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-light-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

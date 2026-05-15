@@ -123,3 +123,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* PWA & Mobile Safe Area Support */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 8px);
+}
+
+/* Evita bounce no iOS em PWA */
+html,
+body {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}

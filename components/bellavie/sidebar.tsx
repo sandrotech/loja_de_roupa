@@ -21,6 +21,8 @@ import { cn } from "@/lib/utils";
 interface SidebarProps {
   activeScreen: string;
   onNavigate: (screen: string) => void;
+  user?: { name: string; role: string; store: string };
+  onLogout?: () => void;
 }
 
 const menuItems = [
@@ -47,7 +49,7 @@ const menuItems = [
   },
 ];
 
-export function Sidebar({ activeScreen, onNavigate }: SidebarProps) {
+export function Sidebar({ activeScreen, onNavigate, user, onLogout }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
@@ -139,13 +141,13 @@ export function Sidebar({ activeScreen, onNavigate }: SidebarProps) {
           <Avatar className="w-10 h-10 border-2 border-[#9A7A8F]/20">
             <AvatarImage src="/placeholder-avatar.jpg" />
             <AvatarFallback className="bg-[#9A7A8F] text-white font-semibold">
-              AN
+              {user?.name?.slice(0, 2).toUpperCase() ?? "BV"}
             </AvatarFallback>
           </Avatar>
           {!collapsed && (
             <div className="flex-1 min-w-0">
-              <p className="font-semibold text-sm text-foreground truncate">Ana Silva</p>
-              <p className="text-xs text-muted-foreground truncate">Gerente Jangurussu</p>
+              <p className="font-semibold text-sm text-foreground truncate">{user?.name ?? "Usuário"}</p>
+              <p className="text-xs text-muted-foreground truncate">{user?.role} • {user?.store}</p>
             </div>
           )}
         </div>
@@ -162,6 +164,7 @@ export function Sidebar({ activeScreen, onNavigate }: SidebarProps) {
             <Button
               variant="ghost"
               size="sm"
+              onClick={onLogout}
               className="flex-1 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-xl"
             >
               <LogOut className="w-4 h-4 mr-2" />
